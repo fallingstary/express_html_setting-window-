@@ -18,42 +18,55 @@
 - 원래는 코드 수정하면 서버를 종료했다가 다시 실행해주는 작업을 해야함.
 4. package.json의 script부분 start 추가
 -----------------------------
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
-  },
+
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "start": "nodemon index.js"
+    },
+  
 -----------------------------
 5. index.js 파일 생성
 6. npm install express
 7. express 서버 환경 세팅 코드 작성
 -----------------------------
-const express = require('express');
-const app = express();
 
-app.listen(7500, (req, res) => {
-    console.log('express 가동 포트 : ', 7500);
-})
+    const express = require('express');
+    const app = express();
+
+    app.listen(7500, (req, res) => {
+      console.log('express 가동 포트 : ', 7500); 
+    })
+
 -----------------------------
+
 8. 터미널에 npm start 명령어 실행해서 테스트
 9. 아래 코드를 index.js에 추가해서 텍스트 잘 나오는 지 로컬 브라우저에서 확인
+
 -----------------------------
-app.get('/', (req, res) => {
-    res.send('<h1>hello world!</h1>');
-})
+
+    app.get('/', (req, res) => {
+      res.send('hello world!');
+    
+
 -----------------------------
 
 * html까지 연결해보기
 1. 연결 확인 되었다면, html 파일 연결해보기
 2. "public"이라는 폴더 생성 후 public 폴더 안에 index.html 파일 생성
-3. index.html에서 "!" 입력해서 기본 베이스 코드 생성 해주고 "<h1>hello world</h1>"입력
+3. index.html에서 "!" 입력해서 기본 베이스 코드 생성 해주고 "hello world"입력
 4. index.js에 다음 코드 추가 작성
 -----------------------------
-app.use(express.static('public'));
+
+    app.use(express.static('public'));
+
 -----------------------------
+
 5. 로컬 브라우저에서 확인
 6. 더 다양한 폴더와 html을 추가해서 사용하려면 아래의 코드처럼 폴더 경로만 정의해주고, "localhost:port/해당html파일이름.html"해서 테스트
 -----------------------------
-app.use(express.static('public/easy'));
-app.use(express.static('public/middle'));
-app.use(express.static('public/hard'));
+
+    app.use(express.static('public/easy'));
+    app.use(express.static('public/middle'));
+    app.use(express.static('public/hard'));
+
 -----------------------------
